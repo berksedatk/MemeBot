@@ -1,0 +1,25 @@
+{
+  "name": "memebot",
+  "version": "1.0.0",
+  "description": "A bot template made by Sax#6211, please drop a credit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sax#6211",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "hastebin-gen": "^2.0.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaxDev/MemeBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SaxDev/MemeBot/issues"
+  },
+  "homepage": "https://github.com/SaxDev/MemeBot#readme"
+}
