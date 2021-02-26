@@ -9,12 +9,8 @@ module.exports = async (client, reaction, user) => {
   Starboard.findOne({ userID: reaction.message.author.id }, (err, sb) => {
     if (err) console.log("An error occured: " + err);
     if (sb) {
-      sb.stars.set(reaction.message.id, {
-        count: reaction.count,
-        channel: reaction.message.channel.id,
-        count: reaction.count
-      });
-      sb.save().then(() => console.log(`${reaction.message.author.tag} dropped to ${reaction.count} star with their ${reaction.message.id} message.`))
+      sb.stars--;
+      sb.save().then(() => console.log(`${reaction.message.author.tag} dropped to ${sb.stars} star with their ${reaction.message.id} message.`))
     }
   });
 }
