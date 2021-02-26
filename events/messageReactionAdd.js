@@ -18,7 +18,7 @@ module.exports = async (client, reaction, user) => {
     } else {
       sb.stars++;
     }
-    if (reaction.count >= 10) {
+    if (reaction.count >= 5) {
       client.channels.cache.get("793483546689273856").send(new Discord.MessageEmbed()
     .setAuthor(reaction.message.author.tag, reaction.message.author.avatarURL())
     .setDescription(`Reached ${reaction.count} :star:!`)
