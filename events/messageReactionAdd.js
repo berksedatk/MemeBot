@@ -15,6 +15,8 @@ module.exports = async (client, reaction, user) => {
         username: reaction.message.author.tag,
         stars: reaction.count
       });
+    } else {
+      sb.stars++;
     }
     if (reaction.count >= 10) {
       client.channels.cache.get("793483546689273856").send(new Discord.MessageEmbed()
@@ -25,7 +27,6 @@ module.exports = async (client, reaction, user) => {
     .setTimestamp()
     .setColor("GOLD"))
     }
-    sb.stars = reaction.count
-    sb.save().then(() => console.log(`${reaction.message.author.tag} gained ${reaction.count} star with their ${reaction.message.id} message.`))
+    sb.save().then(() => console.log(`${reaction.message.author.tag} gained ${sb.stars} star with their ${reaction.message.id} message.`))
   });
 }
