@@ -49,7 +49,7 @@ module.exports = (client, message) => {
     setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
   } else {
     const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-    if (now < expirationTime && !config.devs.includes(message.author.id)) {
+    if (now < expirationTime && !devs.includes(message.author.id)) {
       const timeLeft = (expirationTime - now) / 1000;
       return message.reply(`Please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
     }
