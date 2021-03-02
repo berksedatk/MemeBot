@@ -18,16 +18,7 @@ module.exports = {
     ]
 
     Stats.findOne({ epic: true }, (err, stats) => {
-      console.log(stats)
       if (err) return message.channel.send(err);
-      if (!stats) {
-        stats = new Stats({
-          epic: true,
-          users: new Map(),
-          roles: new Map()
-        })
-        stats.save().catch(err => console.log(err))
-      }
       if (stats) {
         if (!users.get(message.autor.id)) {
           users.set(message.author.id, {
@@ -75,6 +66,14 @@ module.exports = {
         });
 
         stats.save()
+      }
+      if (!stats) {
+        stats = new Stats({
+          epic: true,
+          users: new Map(),
+          roles: new Map()
+        })
+        stats.save().then(() => console.log("test")).catch(err => console.log(err))
       }
     })
   }
