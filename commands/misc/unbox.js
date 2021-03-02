@@ -19,8 +19,8 @@ module.exports = {
 
     Stats.find({}, (err, stats) => {
       if (err) return message.channel.send(err);
-      let users = stats[0].users;
-      let roles = stats[0].roles;
+      let users = stats.users;
+      let roles = stats.roles;
       if (!users.get(message.autor.id)) {
         users.set(message.author.id, {
           userID: message.author.id,
@@ -37,9 +37,9 @@ module.exports = {
         if (rnd == 35) {
           return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
             message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
-            if (stats[0].roles.get(items[35])) {
+            if (stats.roles.get(items[35])) {
               let count = stats[0].roles.get(items[35]).count ++;
-              stats[0].roles.set(items[35], {
+              stats.roles.set(items[35], {
                 count: count
               });
             }
@@ -53,9 +53,9 @@ module.exports = {
 
       return message.member.roles.add(items[item], {reason: `They won it`}).then(() => {
         message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${items[item]}> role!` }});
-        if (stats[0].roles.get(items[item])) {
-          let count = stats[0].roles.get(items[item]).count ++;
-          stats[0].roles.set(items[item], {
+        if (stats.roles.get(items[item])) {
+          let count = stats.roles.get(items[item]).count ++;
+          stats.roles.set(items[item], {
             count: count
           });
         }
@@ -66,7 +66,7 @@ module.exports = {
         })
       });
 
-      stats[0].save()
+      stats.save()
     })
   }
 };
