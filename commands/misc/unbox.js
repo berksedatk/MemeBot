@@ -20,14 +20,14 @@ module.exports = {
     Stats.findOne({ epic: true }, (err, stats) => {
       if (err) return message.channel.send(err);
       if (stats) {
-        if (!stats.users.get(message.autor.id)) {
+        if (!stats.users.get(message.author.id)) {
           stats.users.set(message.author.id, {
             userID: message.author.id,
             username: message.author.tag,
             claimed: true
           })
         } else {
-          if (stats.users.get(message.autor.id).claimed) return message.channel.send("You already claimed your free role!");
+          if (stats.users.get(message.author.id).claimed) return message.channel.send("You already claimed your free role!");
         }
 
         let rnd = Math.floor(Math.random() * items.length)
