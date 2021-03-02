@@ -50,11 +50,11 @@ module.exports = {
           item = items[Math.floor(Math.random() * items.length)];
         }
 
-        return message.member.roles.add(items[item], {reason: `They won it`}).then(() => {
-          message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${items[item]}> role!` }});
-          if (stats.roles.get(items[item])) {
-            let count = stats.roles.get(items[item]).count ++;
-            stats.roles.set(items[item], {
+        return message.member.roles.add(item, {reason: `They won it`}).then(() => {
+          message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${item}> role!` }});
+          if (stats.roles.get(item)) {
+            let count = stats.roles.get(item).count ++;
+            stats.roles.set(item, {
               count: count
             });
           }
