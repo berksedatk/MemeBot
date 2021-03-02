@@ -34,17 +34,16 @@ module.exports = {
       let rnd = Math.floor(Math.random() * items.length)
       if (rnd == 35) {
         let rnd = Math.floor(Math.random() * items.length)
-          if (rnd == 35) {
-            return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
-              message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
-              if (stats[0].roles.get(items[35])) {
-                let count = stats[0].roles.get(items[35]).count ++;
-                stats[0].roles.set(items[35], {
-                  count: count
-                });
-              }
-            });
-          }
+        if (rnd == 35) {
+          return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
+            message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
+            if (stats[0].roles.get(items[35])) {
+              let count = stats[0].roles.get(items[35]).count ++;
+              stats[0].roles.set(items[35], {
+                count: count
+              });
+            }
+          });
         }
       }
       let item = items[Math.floor(Math.random() * items.length)];
