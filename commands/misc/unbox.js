@@ -32,6 +32,12 @@ module.exports = {
         }
 
         let rnd = Math.floor(Math.random() * items.length)
+
+        let item = items[Math.floor(Math.random() * items.length)];
+        while (message.member.roles.cache.has(item)) {
+          item = items[Math.floor(Math.random() * items.length)];
+        }
+
         if (rnd == 35) {
           let rnd = Math.floor(Math.random() * items.length)
           if (rnd == 35) {
@@ -43,14 +49,10 @@ module.exports = {
                   count: count
                 });
               }
+              stats.save()
             });
           }
         }
-        let item = items[Math.floor(Math.random() * items.length)];
-        while (message.member.roles.cache.has(item)) {
-          item = items[Math.floor(Math.random() * items.length)];
-        }
-
         //message.member.roles.add(item, {reason: `They won it`}).then(() => {});
 
         message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${item}> role!` }});
