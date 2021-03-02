@@ -58,16 +58,21 @@ module.exports = {
             stats.roles.set(item, {
               count: count
             });
+          } else {
+            stats.roles.set(item, {
+              count: 1
+            });
           }
-          stats.users.set(message.author.id, {
-            userID: message.author.id,
-            username: message.author.tag,
-            claimed: true
-          })
         });
 
+        stats.users.set(message.author.id, {
+          userID: message.author.id,
+          username: message.author.tag,
+          claimed: true
+        })
         stats.save()
       }
+      
       if (!stats) {
         stats = new Stats({
           epic: true,
