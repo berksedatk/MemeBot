@@ -18,6 +18,7 @@ module.exports = {
     ]
 
     Stats.find({}, (err, stats) => {
+      console.log(stats)
       if (err) return message.channel.send(err);
       if (!stats) {
         stats = new Stats({
