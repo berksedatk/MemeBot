@@ -46,7 +46,7 @@ module.exports = {
           }
         }
         let item = items[Math.floor(Math.random() * items.length)];
-        while (message.member.roles.has(item)) {
+        while (message.member.roles.cache.has(item)) {
           item = items[Math.floor(Math.random() * items.length)];
         }
 
