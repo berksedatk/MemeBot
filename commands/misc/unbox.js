@@ -19,6 +19,12 @@ module.exports = {
 
     Stats.find({}, (err, stats) => {
       if (err) return message.channel.send(err);
+      if (!stats) {
+        stats = new Stats({
+          users: new Map(),
+          roles: new Map()
+        })
+      }
       let users = stats.users;
       let roles = stats.roles;
       if (!users.get(message.autor.id)) {
