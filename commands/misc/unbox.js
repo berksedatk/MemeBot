@@ -24,56 +24,56 @@ module.exports = {
           users: new Map(),
           roles: new Map()
         })
-        stats.save()
+        stats.save().catch(err => console.log(err))
       }
-      let users = stats.users;
-      let roles = stats.roles;
-      if (!users.get(message.autor.id)) {
-        users.set(message.author.id, {
-          userID: message.author.id,
-          username: message.author.tag,
-          claimed: true
-        })
-      } else {
-        if (users.get(message.autor.id).claimed) return message.channel.send("You already claimed your free role!");
-      }
+      if (stats) {
+        if (!users.get(message.autor.id)) {
+          users.set(message.author.id, {
+            userID: message.author.id,
+            username: message.author.tag,
+            claimed: true
+          })
+        } else {
+          if (users.get(message.autor.id).claimed) return message.channel.send("You already claimed your free role!");
+        }
 
-      let rnd = Math.floor(Math.random() * items.length)
-      if (rnd == 35) {
         let rnd = Math.floor(Math.random() * items.length)
         if (rnd == 35) {
-          return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
-            message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
-            if (stats.roles.get(items[35])) {
-              let count = stats[0].roles.get(items[35]).count ++;
-              stats.roles.set(items[35], {
-                count: count
-              });
-            }
-          });
+          let rnd = Math.floor(Math.random() * items.length)
+          if (rnd == 35) {
+            return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
+              message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
+              if (stats.roles.get(items[35])) {
+                let count = stats[0].roles.get(items[35]).count ++;
+                stats.roles.set(items[35], {
+                  count: count
+                });
+              }
+            });
+          }
         }
-      }
-      let item = items[Math.floor(Math.random() * items.length)];
-      while (message.member.roles.has(item)) {
-        item = items[Math.floor(Math.random() * items.length)];
-      }
-
-      return message.member.roles.add(items[item], {reason: `They won it`}).then(() => {
-        message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${items[item]}> role!` }});
-        if (stats.roles.get(items[item])) {
-          let count = stats.roles.get(items[item]).count ++;
-          stats.roles.set(items[item], {
-            count: count
-          });
+        let item = items[Math.floor(Math.random() * items.length)];
+        while (message.member.roles.has(item)) {
+          item = items[Math.floor(Math.random() * items.length)];
         }
-        users.set(message.author.id, {
-          userID: message.author.id,
-          username: message.author.tag,
-          claimed: true
-        })
-      });
 
-      stats.save()
+        return message.member.roles.add(items[item], {reason: `They won it`}).then(() => {
+          message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${items[item]}> role!` }});
+          if (stats.roles.get(items[item])) {
+            let count = stats.roles.get(items[item]).count ++;
+            stats.roles.set(items[item], {
+              count: count
+            });
+          }
+          users.set(message.author.id, {
+            userID: message.author.id,
+            username: message.author.tag,
+            claimed: true
+          })
+        });
+
+        stats.save()
+      }
     })
   }
 };
