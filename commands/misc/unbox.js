@@ -24,6 +24,7 @@ module.exports = {
           users: new Map(),
           roles: new Map()
         })
+        stats.save()
       }
       let users = stats.users;
       let roles = stats.roles;
