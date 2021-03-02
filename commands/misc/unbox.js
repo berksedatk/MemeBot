@@ -5,7 +5,6 @@ module.exports = {
   name: "unbox",
   description: "Unboxes your limited role!",
   cooldown: 60,
-  dev: true,
   execute(bot, message, args) {
     let items = [
       "587345073792876564", "588479443710902282", "591698070278897704", "596559577856606218", "598680911189508108",
