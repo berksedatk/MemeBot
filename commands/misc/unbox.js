@@ -17,11 +17,12 @@ module.exports = {
       ""
     ]
 
-    Stats.findOne({}, (err, stats) => {
+    Stats.findOne({ epic: true }, (err, stats) => {
       console.log(stats)
       if (err) return message.channel.send(err);
       if (!stats) {
         stats = new Stats({
+          epic: true,
           users: new Map(),
           roles: new Map()
         })
