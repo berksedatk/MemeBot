@@ -31,16 +31,14 @@ module.exports = {
           if (stats.users.get(message.author.id).claimed) return message.channel.send("You already claimed your free role!");
         }
 
-        let rnd = Math.floor(Math.random() * items.length)
-
         let item = items[Math.floor(Math.random() * items.length)];
         while (message.member.roles.cache.has(item)) {
           item = items[Math.floor(Math.random() * items.length)];
         }
 
-        if (rnd == 35) {
-          rnd = Math.floor(Math.random() * items.length)
-          if (rnd == 35) {
+        if (item === "816431917712932914") {
+          item = items[Math.floor(Math.random() * items.length)];
+          if (item === "816431917712932914") {
             return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
               message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
               if (stats.roles.get(items[35])) {
