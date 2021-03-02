@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const statsSchema = new mongoose.Schema({
+  epic: Boolean,
   roles: {
     type: Map,
     of: Object
