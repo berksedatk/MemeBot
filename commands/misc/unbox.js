@@ -15,7 +15,7 @@ module.exports = {
       "657042582693740564", "657791320932352030", "662649130438492170", "665201365106032651", "666718052187897858",
       "670093429090418739", "674632446741839872", "678062562415345665", "689133046334750829", "701798890302734418",
       "705900410162118747", "723970407274643608", "749349393630756884", "754115403495768065", "758450207506694194",
-      ""
+      "816431917712932914"
     ]
 
     Stats.findOne({ epic: true }, (err, stats) => {
@@ -39,7 +39,7 @@ module.exports = {
         }
 
         if (rnd == 35) {
-          let rnd = Math.floor(Math.random() * items.length)
+          rnd = Math.floor(Math.random() * items.length)
           if (rnd == 35) {
             return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
               message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
