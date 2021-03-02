@@ -33,7 +33,7 @@ module.exports = {
 
       let rnd = Math.floor(Math.random() * items.length)
       if (rnd == 35) {
-        let rnd = Math.floor(Math.random() * items.length) {
+        let rnd = Math.floor(Math.random() * items.length)
           if (rnd == 35) {
             return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
               message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
