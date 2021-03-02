@@ -11,7 +11,7 @@ module.exports = {
     Starboard.find({}, async (err, sbs) => {
       let top = [];
       await sbs.forEach(async sb => {
-        let user = await bot.users.fetch(sb.userID)
+        let user = await client.users.fetch(sb.userID)
         top.push({
           user: user.tag,
           count: sb.stars
