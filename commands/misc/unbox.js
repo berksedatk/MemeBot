@@ -6,7 +6,7 @@ module.exports = {
   description: "Unboxes your limited role!",
   cooldown: 60,
   execute(bot, message, args) {
-    if (message.channel.id != "817778013625647155") return;
+    if (message.channel.id != "817778013625647155" || message.channel.id != "816308682195337227") return;
 
     let items = [
       "587345073792876564", "588479443710902282", "591698070278897704", "596559577856606218", "598680911189508108",
@@ -43,7 +43,7 @@ module.exports = {
             return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
               message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
               bot.channels.cache.get("724067529605120051").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
-              bot.channels.cacae.get("").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
+              bot.channels.cacae.get("822198432033669200").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
               if (stats.roles.get(items[35])) {
                 let count = stats.roles.get(items[35]).count ++;
                 stats.roles.set(items[35], {
@@ -56,7 +56,7 @@ module.exports = {
         }
         message.member.roles.add(item, {reason: `They won it`}).then(() => {
           message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${item}> role!` }});
-          bot.channels.cacae.get("").send({embed:{color: "PURPLE", description: `${message.author} unboxed the role <@&${items[35]}>` }})
+          bot.channels.cacae.get("822198432033669200").send({embed:{color: "PURPLE", description: `${message.author} unboxed the role <@&${items[35]}>` }})
           if (stats.roles.get(item)) {
             let count = stats.roles.get(item).count ++;
             stats.roles.set(item, {
