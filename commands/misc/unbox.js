@@ -49,7 +49,16 @@ module.exports = {
                 stats.roles.set(items[35], {
                   count: count
                 });
+              } else {
+                stats.roles.set(items[35], {
+                  count: 1
+                })
               }
+              stats.users.set(message.author.id, {
+                userID: message.author.id,
+                username: message.author.tag,
+                claimed: true
+              })
               stats.save()
             });
           }
@@ -67,13 +76,13 @@ module.exports = {
               count: 1
             });
           }
+          stats.users.set(message.author.id, {
+            userID: message.author.id,
+            username: message.author.tag,
+            claimed: true
+          })
+          stats.save()
         });
-        stats.users.set(message.author.id, {
-          userID: message.author.id,
-          username: message.author.tag,
-          claimed: true
-        })
-        stats.save()
       }
 
       if (!stats) {
