@@ -45,7 +45,7 @@ module.exports = {
               bot.channels.cache.get("724067529605120051").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
               bot.channels.cache.get("822198432033669200").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
               if (stats.roles.get(items[35])) {
-                let count = stats.roles.get(items[35]).count ++;
+                let count = stats.roles.get(items[35]).count +1;
                 stats.roles.set(items[35], {
                   count: count
                 });
@@ -67,7 +67,7 @@ module.exports = {
           message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${item}> role!` }});
           bot.channels.cache.get("822198432033669200").send({embed:{color: "PURPLE", description: `${message.author} unboxed the role <@&${item}>` }})
           if (stats.roles.get(item)) {
-            let count = stats.roles.get(item).count ++;
+            let count = stats.roles.get(item).count +1;
             stats.roles.set(item, {
               count: count
             });
