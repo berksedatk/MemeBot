@@ -6,7 +6,7 @@ module.exports = {
   description: "Unboxes your limited role!",
   cooldown: 60,
   execute(bot, message, args) {
-    if (message.channel.id != "817778013625647155" || message.channel.id != "816308682195337227") return;
+    if (message.channel.id != "817778013625647155" && message.channel.id != "816308682195337227") return;
 
     let items = [
       "587345073792876564", "588479443710902282", "591698070278897704", "596559577856606218", "598680911189508108",
