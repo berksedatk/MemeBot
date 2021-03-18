@@ -56,7 +56,7 @@ module.exports = {
         }
         message.member.roles.add(item, {reason: `They won it`}).then(() => {
           message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${item}> role!` }});
-          bot.channels.cache.get("822198432033669200").send({embed:{color: "PURPLE", description: `${message.author} unboxed the role <@&${items[35]}>` }})
+          bot.channels.cache.get("822198432033669200").send({embed:{color: "PURPLE", description: `${message.author} unboxed the role <@&${item}>` }})
           if (stats.roles.get(item)) {
             let count = stats.roles.get(item).count ++;
             stats.roles.set(item, {
