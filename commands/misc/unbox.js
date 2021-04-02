@@ -32,35 +32,34 @@ module.exports = {
           if (stats.users.get(message.author.id).claimed) return message.channel.send("You already claimed your free role!");
         }
 
-        let item = items[Math.floor(Math.random() * items.length)];
-        while (message.member.roles.cache.has(item)) {
+        let item;
+        do {
           item = items[Math.floor(Math.random() * items.length)];
+          console.log("Rerolled for user " + message.author.tag)
+        } while (message.member.roles.cache.has(item))
+
+        if (message.member.roles.cache.has(item)) {
+          item = items[Math.floor(Math.random() * items.length)];
+          console.log("Reroll didnt work")
         }
 
         if (item === "816431917712932914") {
-          item = items[Math.floor(Math.random() * items.length)];
-          if (item === "816431917712932914") {
+          let roll = Math.floor(Math.random() * 100)
+          if (roll <= 6) {
             return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
               message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
               bot.channels.cache.get("724067529605120051").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
-              bot.channels.cache.get("822198432033669200").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
+              bot.channels.cacae.get("").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
               if (stats.roles.get(items[35])) {
-                let count = stats.roles.get(items[35]).count +1;
+                let count = stats.roles.get(items[35]).count ++;
                 stats.roles.set(items[35], {
                   count: count
                 });
-              } else {
-                stats.roles.set(items[35], {
-                  count: 1
-                })
               }
-              stats.users.set(message.author.id, {
-                userID: message.author.id,
-                username: message.author.tag,
-                claimed: true
-              })
               stats.save()
             });
+          } else {
+            item = items[Math.floor(Math.random() * items.length)];
           }
         }
         message.member.roles.add(item, {reason: `They won it`}).then(() => {
