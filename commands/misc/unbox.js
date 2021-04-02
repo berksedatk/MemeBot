@@ -46,7 +46,7 @@ module.exports = {
         if (item === "816431917712932914") {
           let roll = Math.floor(Math.random() * 100)
           if (roll <= 6) {
-            return message.member.roles.add(items[35], {reason: `They won it!!`}).then(() => {
+            return message.member.roles.add(items[35], `They won it!!`).then(() => {
               message.channel.send({embed:{color: "GOLD", description: `Congrats!! You got the super rare role <@&${items[35]}>!` }})
               bot.channels.cache.get("724067529605120051").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
               bot.channels.cacae.get("").send({embed:{color: "GOLD", description: `${message.author} unboxed the super rare role <@&${items[35]}>!` }})
@@ -55,14 +55,27 @@ module.exports = {
                 stats.roles.set(items[35], {
                   count: count
                 });
+              } else {
+                stats.roles.set(items[35], {
+                  count: 1
+                });
               }
+              stats.users.set(message.author.id, {
+                userID: message.author.id,
+                username: message.author.tag,
+                claimed: true,
+                role: item[35]
+              })
               stats.save()
             });
           } else {
-            item = items[Math.floor(Math.random() * items.length)];
+            do {
+              item = items[Math.floor(Math.random() * items.length)];
+              console.log("Rerolled for user " + message.author.tag)
+            } while (message.member.roles.cache.has(item))
           }
         }
-        message.member.roles.add(item, {reason: `They won it`}).then(() => {
+        message.member.roles.add(item, `They won it`).then(() => {
           message.channel.send({embed:{color: "PURPLE", description: `You unboxed the <@&${item}> role!` }});
           bot.channels.cache.get("822198432033669200").send({embed:{color: "PURPLE", description: `${message.author} unboxed the role <@&${item}>` }})
           if (stats.roles.get(item)) {
@@ -78,7 +91,8 @@ module.exports = {
           stats.users.set(message.author.id, {
             userID: message.author.id,
             username: message.author.tag,
-            claimed: true
+            claimed: true,
+            role: item
           })
           stats.save()
         });
