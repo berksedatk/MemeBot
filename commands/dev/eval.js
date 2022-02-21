@@ -38,7 +38,7 @@ module.exports = {
           .setURL(haste)
           .setColor("#fcfffd");
           console.log(output);
-          msg.edit("", embed);
+          msg.edit({content: null, embeds: [embed]});
         }).catch(err => {
           console.log("Hastebin error: " + err)
         });
@@ -47,7 +47,7 @@ module.exports = {
           .addField("Input", `\`\`\`js\n${code}\`\`\``)
           .addField("Output", `\`\`\`js\n${output}\`\`\``)
           .setColor("#fcfffd");
-        msg.edit("Results",{embeds: [embed]} );
+        msg.edit({content: null, embeds: [embed]} );
       }
     } catch (e) {
       msg.edit(`Error \`\`\`js\n${e}\`\`\``);
