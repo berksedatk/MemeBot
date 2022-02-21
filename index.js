@@ -3,7 +3,7 @@ const { prefix } = require("./config.json");
 require('dotenv').config();
 
 //Discord
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, Intents } = require("discord.js");
 const client = new Client({
   disableMentions: "everyone",
   messageCacheMaxSize: 35,
@@ -12,7 +12,10 @@ const client = new Client({
 }, {
   partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 }, {
-  intents: ['GUILDS','GUILD_MEMBERS','GUILD_MESSAGES','GUILD_MESSAGE_REACTIONS','DIRECT_MESSAGES']
+  intents: [
+    Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_MEMBERS, 
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGES
+  ]
 });
 
 client.commands = new Collection();
