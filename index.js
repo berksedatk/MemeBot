@@ -6,13 +6,10 @@ require('dotenv').config();
 const { Client, Collection, Intents } = require("discord.js");
 const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_MEMBERS, 
+    Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_BANS, Intents.FLAGS.GUILD_MEMBERS, 
     Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.DIRECT_MESSAGES
   ],
   disableMentions: "everyone",
-  messageCacheMaxSize: 35,
-  messageCacheLifetime: 30,
-  messageSweepInterval: 60
 });
 
 client.commands = new Collection();
