@@ -12,9 +12,7 @@ const client = new Client({
 }, {
   partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 }, {
-  ws: {
-    intents: ['GUILDS','GUILD_MEMBERS','GUILD_MESSAGES','GUILD_MESSAGE_REACTIONS','DIRECT_MESSAGES']
-  }
+  intents: ['GUILDS','GUILD_MEMBERS','GUILD_MESSAGES','GUILD_MESSAGE_REACTIONS','DIRECT_MESSAGES']
 });
 
 client.commands = new Collection();
