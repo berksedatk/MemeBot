@@ -47,7 +47,7 @@ module.exports = {
           .addField("Input", `\`\`\`js\n${code}\`\`\``)
           .addField("Output", `\`\`\`js\n${output}\`\`\``)
           .setColor("#fcfffd");
-        msg.edit("", embed);
+        msg.edit("Results", embed);
       }
     } catch (e) {
       msg.edit(`Error \`\`\`js\n${e}\`\`\``);
