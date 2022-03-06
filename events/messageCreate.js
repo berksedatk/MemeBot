@@ -16,7 +16,7 @@ module.exports = (client, message) => {
       client.ownerLastMessage.claimed = true;
   }
 
-  if (message.author.id == "536958289641078804" || message.author.id == "495248175808905226") {
+  if (message.author.id == "536958289641078804" ) {
     client.ownerLastMessage = {
       channel: message.channel.id,
       claimed: false
