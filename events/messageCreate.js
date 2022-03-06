@@ -18,7 +18,7 @@ module.exports = (client, message) => {
     }
   }
 
-  if (!claimed && client.ownerLastMessage.channel == message.channel.id) {
+  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id) {
     message.channel.send(`${message.auhtor} has met the owner!`);
   }
 
