@@ -9,16 +9,16 @@ function prettyString(string) {
 
 module.exports = (client, message) => {
 
+  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id 
+    && message.author.id != client.user.id && message.author.id != "536958289641078804") {
+      message.channel.send(`${message.author.tag} has met the owner!`);
+  }
+
   if (message.author.id == "536958289641078804" || message.author.id == "495248175808905226") {
     client.ownerLastMessage = {
       channel: message.channel.id,
       claimed: false
     }
-  }
-
-  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id 
-  && message.author.id != client.user.id && message.author.id != "536958289641078804") {
-    message.channel.send(`${message.author.tag} has met the owner!`);
   }
 
   for (const thisPrefix of prefixes) {
