@@ -18,7 +18,8 @@ module.exports = (client, message) => {
     }
   }
 
-  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id && (message.author.id != "536958289641078804" || message.author.id == "810927960843354132")) {
+  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id && 
+  (message.author.id != "536958289641078804" || message.author.id != "810927960843354132")) {
     message.channel.send(`${message.auhtor} has met the owner!`);
     claimed = true;
   }
