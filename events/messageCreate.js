@@ -18,7 +18,7 @@ module.exports = (client, message) => {
 
   if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id 
   && message.author.id != client.user.id && message.author.id != "536958289641078804") {
-    message.channel.send(`${message.auhtor.tag} has met the owner!`);
+    message.channel.send(`${message.author.tag} has met the owner!`);
     client.ownerLastMessage.claimed = true;
   }
 

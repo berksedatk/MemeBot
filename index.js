@@ -14,7 +14,7 @@ const client = new Client({
 
 client.commands = new Collection();
 client.events = new Collection();
-client.ownerLastMessage = {clained: false};
+client.ownerLastMessage = {clained: true};
 
 ["commands","events"].forEach(handler => {
   require(`./handlers/${handler}.js`)(client);
