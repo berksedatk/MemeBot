@@ -18,10 +18,10 @@ module.exports = (client, message) => {
     }
   }
 
-  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id && 
-  (message.author.id != "536958289641078804" || message.author.id != "810927960843354132")) {
-    message.channel.send(`${message.auhtor} has met the owner!`);
-    claimed = true;
+  if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id 
+  && !message.author.id == client.user.id && !message.author.id == "536958289641078804") {
+    message.channel.send(`${message.auhtor.tag} has met the owner!`);
+    client.ownerLastMessage.claimed = true;
   }
 
   for (const thisPrefix of prefixes) {
