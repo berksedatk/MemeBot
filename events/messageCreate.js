@@ -10,8 +10,9 @@ function prettyString(string) {
 module.exports = (client, message) => {
 
   if (!client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id 
-    && message.author.id != client.user.id && message.author.id != "536958289641078804") {
+    && message.author.id != client.user.id && message.author.id != "536958289641078804" && !message.author.roles.cache.has("950103739748978738")) {
       message.channel.send(`${message.author.tag} has met the owner!`);
+      message.author.roles.add("950103739748978738");
       client.ownerLastMessage.claimed = true;
   }
 
