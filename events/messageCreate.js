@@ -9,6 +9,19 @@ function prettyString(string) {
 
 module.exports = (client, message) => {
 
+  if (message.author.id == "536958289641078804" || message.author.id == "495248175808905226") {
+    client.ownerLastMessage = {
+      msg: message,
+      channel: message.channel.id,
+      time: new Date().now,
+      claimed: false
+    }
+  }
+
+  if (!claimed && client.ownerLastMessage.channel == message.channel.id) {
+    message.channel.send(`${message.auhtor} has met the owner!`);
+  }
+
   for (const thisPrefix of prefixes) {
     if (message.content.toLowerCase().startsWith(thisPrefix)) message.prefix = thisPrefix;
   }
