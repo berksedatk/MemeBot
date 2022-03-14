@@ -8,6 +8,7 @@ function prettyString(string) {
 }
 
 module.exports = (client, message) => {
+  if (!message.guild.me.permissionsIn(message.channel).has("SEND_MESSAGES")) return console.log("Cant talk in this chat :(");
 
   if (!message.author.bot && !client.ownerLastMessage.claimed && client.ownerLastMessage.channel == message.channel.id 
     && message.author.id != client.user.id && message.author.id != "536958289641078804" && !message.member.roles.cache.has("950104961855946763")) {
