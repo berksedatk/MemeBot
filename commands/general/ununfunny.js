@@ -11,11 +11,11 @@ module.exports = {
         if (roll == 1) {
             message.member.roles.add("956020022675923005").then(() => {
                 message.member.roles.remove("955854711112728576").then(() => {
-                  message.channel.send(`<@${message.author}> escaped unfunny jail.`);
+                  message.channel.send(`${message.author} escaped unfunny jail.`);
                 })
             });
         } else {
-            message.channel.send(`<@${message.author}> No lmao`);
+            message.channel.send(`${message.author} No lmao`);
         }
     }
     message.delete();
